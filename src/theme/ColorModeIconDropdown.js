@@ -2,25 +2,25 @@ import * as React from "react"
 import DarkModeIcon from "@mui/icons-material/DarkModeRounded"
 import LightModeIcon from "@mui/icons-material/LightModeRounded"
 import Box from "@mui/material/Box"
-import IconButton from "@mui/material/IconButton"
-import Menu from "@mui/material/Menu"
-import MenuItem from "@mui/material/MenuItem"
 import { useColorScheme } from "@mui/material/styles"
+import Switch from '@mui/material/Switch';
 
 export default function ColorModeIconDropdown(props) {
   const { mode, systemMode, setMode } = useColorScheme()
-  const [anchorEl, setAnchorEl] = React.useState(null)
-  const open = Boolean(anchorEl)
-  const handleClick = event => {
-    setAnchorEl(event.currentTarget)
-  }
-  const handleClose = () => {
-    setAnchorEl(null)
-  }
-  const handleMode = targetMode => () => {
-    setMode(targetMode)
-    handleClose()
-  }
+  const [checked, setChecked] = React.useState(false);
+
+  console.log("Checked" + checked);
+  const handleChange = (event, targetMode) => {
+    console.log("Event: " + event);
+    console.log("TargetMode" + targetMode);
+    setChecked(event.target.checked);
+    if (event.target.checked == true){
+      setMode("light");
+    }
+    else if (event.target.checked == false){
+      setMode("dark");
+    }
+  };
   if (!mode) {
     return (
       <Box
@@ -44,45 +44,11 @@ export default function ColorModeIconDropdown(props) {
   }[resolvedMode]
   return (
     <React.Fragment>
-      <IconButton
-        data-screenshot="toggle-mode"
-        onClick={handleClick}
-        disableRipple
-        size="small"
-        aria-controls={open ? "color-scheme-menu" : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? "true" : undefined}
-        {...props}
-      >
-        {icon}
-      </IconButton>
-      <Menu
-        anchorEl={anchorEl}
-        id="account-menu"
-        open={open}
-        onClose={handleClose}
-        onClick={handleClose}
-        slotProps={{
-          paper: {
-            variant: "outlined",
-            sx: {
-              my: "4px"
-            }
-          }
-        }}
-        transformOrigin={{ horizontal: "right", vertical: "top" }}
-        anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
-      >
-        <MenuItem selected={mode === "system"} onClick={handleMode("system")}>
-          System
-        </MenuItem>
-        <MenuItem selected={mode === "light"} onClick={handleMode("light")}>
-          Light
-        </MenuItem>
-        <MenuItem selected={mode === "dark"} onClick={handleMode("dark")}>
-          Dark
-        </MenuItem>
-      </Menu>
+      <Switch 
+        checked={checked}
+        onChange={handleChange}
+        inputProps={{ 'aria-label': 'controlled' }}
+      />
     </React.Fragment>
   )
 }
