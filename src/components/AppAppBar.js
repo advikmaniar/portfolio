@@ -51,10 +51,15 @@ export default function AppAppBar() {
       <Container maxWidth="lg">
         <StyledToolbar variant="dense" disableGutters>
           <Box
-            sx={{ flexGrow: 1, display: "flex", alignItems: "center", px: 0 }}
+            sx={{
+              flexGrow: 1,
+              display: "flex",
+              alignItems: "center",
+              px: 0
+            }}
           >
             <NameLogo />
-            <Box sx={{alignItems: "center"}}>
+            <Box sx={{ alignItems: "center" }}>
               <Button variant="text" color="info" size="small">
                 Home
               </Button>
@@ -70,7 +75,7 @@ export default function AppAppBar() {
               <Button variant="text" color="info" size="small">
                 Contact
               </Button>
-            </Box>           
+            </Box>
           </Box>
           <Box
             sx={{
@@ -79,9 +84,12 @@ export default function AppAppBar() {
               alignItems: "center"
             }}
           >
-          <ColorModeIconDropdown />
+            <ColorModeIconDropdown />
           </Box>
-          <Box sx={{ display: { xs: "flex", md: "none" }, gap: 1 }}>
+          <Box sx={{
+            display: { xs: "flex", md: "none" },
+            gap: 1
+          }}>
             <ColorModeIconDropdown size="medium" />
             <IconButton aria-label="Menu button" onClick={toggleDrawer(true)}>
               <MenuIcon />
