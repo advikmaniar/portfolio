@@ -2,7 +2,7 @@ import * as React from "react"
 import CssBaseline from "@mui/material/CssBaseline"
 import Container from "@mui/material/Container"
 import AppAppBar from "./components/AppAppBar"
-import MainContent from "./components/MainContent"
+import MainContent from "./components/mainContent/MainContent"
 import Footer from "./components/Footer"
 import AppTheme from "./theme/AppTheme"
 
