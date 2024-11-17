@@ -1,5 +1,5 @@
 import * as React from "react";
-import { SvgIcon, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import Logo from '../assets/nameLogo.png';
 

@@ -9,9 +9,9 @@ export default function MainContent() {
     <Container
       sx={{
         display: "flex",
-        flexDirection: { xs: "column", sm: "row" },  //Stack vertically on smaller sccreens
+        flexDirection: { xs: "column", sm: "row" }, 
         gap: { xs: 2, sm: 1 },
-        // bgcolor: "blue",
+        bgcolor: "blue",
         p: { xs: "30px 10px", sm: "100px 20px 100px 20px" },
         alignItems: "center",
       }}

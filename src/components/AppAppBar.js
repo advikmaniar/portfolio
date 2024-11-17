@@ -13,6 +13,8 @@ import MenuIcon from "@mui/icons-material/Menu"
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded"
 import NameLogo from "./NameLogo"
 import ColorModeIconDropdown from "../theme/ColorModeIconDropdown"
+import DownloadIcon from '@mui/icons-material/Download';
+import CVFile from '../assets/Advik_CV.pdf';
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: "flex",
@@ -29,6 +31,36 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   boxShadow: (theme.vars || theme).shadows[1],
   padding: "8px 12px",
 }))
+
+const DownloadCVButton = () => {
+  return (
+    <Button
+      variant="contained"
+      href = {CVFile}
+      target="_blank"
+      rel="noopener noreferrer"
+      sx={{
+        bgcolor: "primary.main",
+        color: "background.paper",
+        borderRadius: "8px",
+        width: "fit-content",
+        px: 2,
+        py: 1,
+        fontWeight: "bold",
+        boxShadow: 3,
+        transition: "all 0.3s ease",
+        '&:hover': {
+          bgcolor: "primary.dark",
+          boxShadow: 6,
+          transform: "translateY(-2px)",
+        },
+      }}
+      endIcon={<DownloadIcon />}
+    >
+      Download CV
+    </Button>
+  )
+}
 
 export default function AppAppBar() {
   const [open, setOpen] = React.useState(false)
@@ -59,7 +91,10 @@ export default function AppAppBar() {
             }}
           >
             <NameLogo />
-            <Box sx={{ alignItems: "center" }}>
+            <Box sx={{
+              alignItems: "center",
+              display: { xs: "none", md: "flex" },
+            }}>
               <Button variant="text" color="info" size="small">
                 Home
               </Button>
@@ -80,17 +115,18 @@ export default function AppAppBar() {
           <Box
             sx={{
               display: { xs: "none", md: "flex" },
-              gap: 1,
+              gap: 2,
               alignItems: "center"
             }}
           >
+            <DownloadCVButton />
             <ColorModeIconDropdown />
           </Box>
           <Box sx={{
             display: { xs: "flex", md: "none" },
             gap: 1
           }}>
-            <ColorModeIconDropdown size="medium" />
+            <DownloadCVButton />
             <IconButton aria-label="Menu button" onClick={toggleDrawer(true)}>
               <MenuIcon />
             </IconButton>
@@ -121,6 +157,7 @@ export default function AppAppBar() {
                 <MenuItem>Skills</MenuItem>
                 <MenuItem>Contact</MenuItem>
                 <Divider sx={{ my: 3 }} />
+                <ColorModeIconDropdown size="medium" />
               </Box>
             </Drawer>
           </Box>
