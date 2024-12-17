@@ -1,10 +1,10 @@
 import * as React from "react"
 import { Box, Container, } from '@mui/material';
-import NameCard from "./NameCard";
-import AboutMeCard from "./AboutMeCard";
+import NameCard from "../components/mainContent/NameCard";
+import AboutMeCard from "../components/mainContent/AboutMeCard";
 
 
-export default function MainContent() {
+export default function MainContentProjects() {
   return (
     <Container
       sx={{

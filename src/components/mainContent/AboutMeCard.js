@@ -1,4 +1,5 @@
 import { Container, Typography, Button, Divider } from '@mui/material';
+import { Link } from "react-router-dom";
 
 const AboutMeCard = () => {
     return (
@@ -26,6 +27,8 @@ const AboutMeCard = () => {
         </Typography>
         <Button
           variant="contained"
+          component={Link}
+          to='/about'
           sx={{
             bgcolor: "primary.main",
             color: "background.paper",
@@ -57,6 +60,8 @@ const AboutMeCard = () => {
         </Typography>
         <Button
           variant="contained"
+          component={Link}
+          to='/projects'
           sx={{
             bgcolor: "primary.main",
             color: "background.paper",

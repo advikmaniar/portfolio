@@ -1,19 +1,34 @@
 import * as React from "react";
-import { Typography } from "@mui/material";
-import { styled } from "@mui/material/styles";
+import {  Button } from "@mui/material";
 import Logo from '../assets/nameLogo.png';
-
-const StyledTypography = styled(Typography)(({ theme }) => ({
-  fontWeight: "bold",
-  fontSize: "18px",
-  color: theme.palette.primary.main, 
-  letterSpacing: 1,
-}));
+import { Link } from "react-router-dom";
+import { alpha, useTheme } from "@mui/material/styles";
 
 export default function NameLogo() {
+
+  const theme = useTheme();
+
   return (
-      <StyledTypography variant="h6" sx={{ display: 'flex', alignItems: 'center' }}>
-        <img src={Logo} alt="Logo" style={{ height: 40, marginRight: 8 }} />
-      </StyledTypography>
+    <Button
+      component={Link}
+      to='/home'
+      sx={{
+        padding: 1,
+        borderRadius: "50%",
+        boxShadow: 5,
+        '&:hover': {
+          backgroundColor: "transparent",
+        },
+      }}
+    >
+      <img
+        src={Logo}
+        alt="Logo"
+        style={{
+          height: "40px",
+          objectFit: "contain",
+        }}
+      />
+    </Button>
   );
 }

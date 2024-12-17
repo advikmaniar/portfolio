@@ -15,6 +15,7 @@ import NameLogo from "./NameLogo"
 import ColorModeIconDropdown from "../theme/ColorModeIconDropdown"
 import DownloadIcon from '@mui/icons-material/Download';
 import CVFile from '../assets/Advik_CV.pdf';
+import { Link } from "react-router-dom";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: "flex",
@@ -36,7 +37,7 @@ const DownloadCVButton = () => {
   return (
     <Button
       variant="contained"
-      href = {CVFile}
+      href={CVFile}
       target="_blank"
       rel="noopener noreferrer"
       sx={{
@@ -81,34 +82,76 @@ export default function AppAppBar() {
       }}
     >
       <Container maxWidth="lg">
-        <StyledToolbar variant="dense" disableGutters>
+        <StyledToolbar
+          variant="dense"
+          disableGutters
+          sx={{
+            backgroundColor: "transparent",
+          }}
+        >
           <Box
             sx={{
               flexGrow: 1,
               display: "flex",
               alignItems: "center",
-              px: 0
+              justifyContent: "space-between",
+              px: 0,
+              backgroundColor: "transparent",
             }}
           >
-            <NameLogo />
-            <Box sx={{
-              alignItems: "center",
-              display: { xs: "none", md: "flex" },
-            }}>
-              <Button variant="text" color="info" size="small">
-                Home
+            <Box
+              sx={{
+                alignItems: "left",
+                borderRadius: "0px 10px 10px 0px",
+                backgroundColor: "transparent",
+                display: { xs: "none", md: "flex" },
+              }}
+            >
+              <NameLogo />
+            </Box>
+            <Box
+              sx={{
+                backgroundColor: "transparent",
+                borderRadius: "0px 10px 10px 0px",
+                display: { xs: "none", md: "flex" },
+                alignItems: "center",
+                justifyContent: "center",
+                flexGrow: 1,
+                gap: 2,
+              }}
+            >
+              <Button
+                variant="text"
+                color="info"
+                size="small"
+                component={Link}
+                to="/home"
+              >
+                HOME
+              </Button>
+              <Button
+                variant="text"
+                color="info"
+                size="small"
+                component={Link}
+                to="/about"
+              >
+                ABOUT
+              </Button>
+              <Button
+                variant="text"
+                color="info"
+                size="small"
+                component={Link}
+                to="/projects"
+              >
+                MY WORK
               </Button>
               <Button variant="text" color="info" size="small">
-                About
+                SKILLS
               </Button>
               <Button variant="text" color="info" size="small">
-                My Work
-              </Button>
-              <Button variant="text" color="info" size="small">
-                Skills
-              </Button>
-              <Button variant="text" color="info" size="small">
-                Contact
+                CONTACT
               </Button>
             </Box>
           </Box>
