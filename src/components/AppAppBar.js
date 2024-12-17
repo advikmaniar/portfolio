@@ -81,7 +81,7 @@ export default function AppAppBar() {
         mt: "calc(var(--template-frame-height, 0px) + 28px)"
       }}
     >
-      <Container maxWidth="lg">
+      <Container maxWidth="md">
         <StyledToolbar
           variant="dense"
           disableGutters

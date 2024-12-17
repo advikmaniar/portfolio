@@ -3,7 +3,11 @@ import { Box, Container } from "@mui/material";
 import NameCard from "./NameCard";
 import AboutMeCard from "./AboutMeCard";
 
-export default function MainContentProjects() {
+export default function MainContent() {
+
+    const bgImages = ['/bgImage1.jpg','/bgImage2.jpg','/bgImage3.jpg','/bgImage4.jpg'];
+    const randomBgImage = bgImages[Math.floor(Math.random() * bgImages.length)];
+
     return (
         <Box
             sx={{
@@ -20,11 +24,12 @@ export default function MainContentProjects() {
                     position: "absolute",
                     width: { xs: "80%", sm: "80%" },
                     height: "100%",
-                    backgroundImage: `url('/bgImage1.jpg')`,
-                    backgroundSize: "cover",
+                    backgroundImage: `url(${randomBgImage})`,
+                    backgroundSize: "60%",
                     backgroundRepeat: "no-repeat",
                     backgroundPosition: "center",
-                    borderRadius: "10%",
+                    backgroundAttachment: "fixed",
+                    borderRadius: "20%",
                     zIndex: 0,
                     filter: "blur(2px)",
                 }}

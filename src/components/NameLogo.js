@@ -14,8 +14,7 @@ export default function NameLogo() {
       to='/home'
       sx={{
         padding: 1,
-        borderRadius: "50%",
-        boxShadow: 5,
+        borderRadius: "20%",
         '&:hover': {
           backgroundColor: "transparent",
         },
