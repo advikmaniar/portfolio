@@ -1,7 +1,7 @@
 import * as React from "react"
 import { Box, Container, } from '@mui/material';
-import NameCard from "../components/mainContent/NameCard";
-import AboutMeCard from "../components/mainContent/AboutMeCard";
+import NameCard from "../homePage/NameCard";
+import AboutMeCard from "../homePage/AboutMeCard";
 
 
 export default function MainContentProjects() {
@@ -11,7 +11,7 @@ export default function MainContentProjects() {
         display: "flex",
         flexDirection: { xs: "column", sm: "row" }, 
         gap: { xs: 2, sm: 1 },
-        bgcolor: "blue",
+        bgcolor: "red",
         p: { xs: "30px 10px", sm: "100px 20px 100px 20px" },
         alignItems: "center",
       }}

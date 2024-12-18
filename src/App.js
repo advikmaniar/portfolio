@@ -5,11 +5,19 @@ import AppAppBar from "./components/AppAppBar";
 import Footer from "./components/Footer";
 import AppTheme from "./theme/AppTheme";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import HomePage from "./components/mainContent/HomePage";
+import HomePage from "./homePage/HomePage";
 import MainContentProjects from "./projectsPage/MainContentProjects";
 import MainContentAboutMe from "./aboutMePage/MainContentAboutMe";
+import ChatBot from "./components/ChatBot";
 
-export default function Blog(props) {
+export default function App(props) {
+
+  const [isChatOpen, setIsChatOpen] = React.useState(false);
+
+  const toggleChat = () => {
+    setIsChatOpen((prev) => !prev);
+  };
+
   return (
     <AppTheme {...props}>
       <CssBaseline enableColorScheme />
@@ -27,6 +35,8 @@ export default function Blog(props) {
             <Route path="/about" element={<MainContentAboutMe />} />
           </Routes>
         </Container>
+        {/* Chatbot */}
+        <ChatBot />
         <Footer />
       </Router>
     </AppTheme>

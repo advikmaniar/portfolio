@@ -1,7 +1,7 @@
 import * as React from "react"
 import { Box, Container, } from '@mui/material';
-import NameCard from "../components/mainContent/NameCard";
-import AboutMeCard from "../components/mainContent/AboutMeCard";
+import NameCard from "../homePage/NameCard";
+import AboutMeCard from "../homePage/AboutMeCard";
 
 
 export default function MainContentAboutMe() {

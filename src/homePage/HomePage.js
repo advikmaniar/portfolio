@@ -5,7 +5,7 @@ import AboutMeCard from "./AboutMeCard";
 
 export default function MainContent() {
 
-    const bgImages = ['/bgImage1.jpg','/bgImage2.jpg','/bgImage3.jpg','/bgImage4.jpg'];
+    const bgImages = ['/bgImage1.jpg','/bgImage2.jpg'];
     const randomBgImage = bgImages[Math.floor(Math.random() * bgImages.length)];
 
     return (
@@ -22,7 +22,7 @@ export default function MainContent() {
             <Box
                 sx={{
                     position: "absolute",
-                    width: { xs: "80%", sm: "80%" },
+                    width: { xs: "80%", sm: "70%" },
                     height: "100%",
                     backgroundImage: `url(${randomBgImage})`,
                     backgroundSize: "60%",

@@ -36,3 +36,23 @@
     transform: rotate(360deg);
   }
 }
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+.animated-name {
+  display: inline-block;
+}
+
+.animated-letter {
+  display: inline-block;
+  opacity: 0;
+  animation: fadeIn 0.5s forwards;
+}
+

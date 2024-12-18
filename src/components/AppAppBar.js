@@ -1,4 +1,4 @@
-import * as React from "react"
+import React, { useState } from "react";
 import { alpha, styled } from "@mui/material/styles"
 import Box from "@mui/material/Box"
 import AppBar from "@mui/material/AppBar"
@@ -15,7 +15,9 @@ import NameLogo from "./NameLogo"
 import ColorModeIconDropdown from "../theme/ColorModeIconDropdown"
 import DownloadIcon from '@mui/icons-material/Download';
 import CVFile from '../assets/Advik_CV.pdf';
+import SkillsSidebar from "../skillsPage/SkillsSidebar";
 import { Link } from "react-router-dom";
+import { RiPagesLine } from "react-icons/ri";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: "flex",
@@ -56,7 +58,7 @@ const DownloadCVButton = () => {
           transform: "translateY(-2px)",
         },
       }}
-      endIcon={<DownloadIcon />}
+      endIcon={<RiPagesLine />}
     >
       Download CV
     </Button>
@@ -65,6 +67,11 @@ const DownloadCVButton = () => {
 
 export default function AppAppBar() {
   const [open, setOpen] = React.useState(false)
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setSidebarOpen((prev) => !prev);
+  }
 
   const toggleDrawer = newOpen => () => {
     setOpen(newOpen)
@@ -147,7 +154,7 @@ export default function AppAppBar() {
               >
                 MY WORK
               </Button>
-              <Button variant="text" color="info" size="small">
+              <Button variant="text" color="info" size="small" onClick={toggleSidebar}>
                 SKILLS
               </Button>
               <Button variant="text" color="info" size="small">
@@ -197,7 +204,7 @@ export default function AppAppBar() {
                 <MenuItem>Home</MenuItem>
                 <MenuItem>About</MenuItem>
                 <MenuItem>My Work</MenuItem>
-                <MenuItem>Skills</MenuItem>
+                <MenuItem onClick={toggleSidebar} >Skills</MenuItem>
                 <MenuItem>Contact</MenuItem>
                 <Divider sx={{ my: 3 }} />
                 <ColorModeIconDropdown size="medium" />
@@ -206,6 +213,7 @@ export default function AppAppBar() {
           </Box>
         </StyledToolbar>
       </Container>
+      <SkillsSidebar open={sidebarOpen} onClose={toggleSidebar} />
     </AppBar>
   )
 }

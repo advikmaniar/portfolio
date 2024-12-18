@@ -51,7 +51,7 @@ const NameCard = () => {
                     display: { xs: 'none', sm: 'none', md: 'inline'},
                     fontSize: { xs: '36px', sm: '65px' }
                 }}>
-                    Hi, I'm
+                    Hi, i'm
                 </Typography>
                 <span> <u>Advik Maniar</u></span>
             </Typography>
