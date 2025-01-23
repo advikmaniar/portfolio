@@ -12,12 +12,6 @@ import ChatBot from "./components/ChatBot";
 
 export default function App(props) {
 
-  const [isChatOpen, setIsChatOpen] = React.useState(false);
-
-  const toggleChat = () => {
-    setIsChatOpen((prev) => !prev);
-  };
-
   return (
     <AppTheme {...props}>
       <CssBaseline enableColorScheme />

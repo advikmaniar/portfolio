@@ -1,5 +1,6 @@
 import { Container, Typography, IconButton } from '@mui/material';
 import { Twitter, LinkedIn, GitHub, Instagram } from '@mui/icons-material';
+import { FaKaggle } from "react-icons/fa";
 import React from 'react';
 
 const StyledIcons = ({ color, bgColor, hoverColor, icon, url }) => {
@@ -85,11 +86,11 @@ const NameCard = () => {
                     url="https://github.com/advikmaniar"
                 />
                 <StyledIcons
-                    color="twitter"
+                    color="kaggle"
                     bgColor="#1da1f2"
                     hoverColor="#1991c6"
-                    icon={<Twitter fontSize="medium" />}
-                    url="https://x.com/home"
+                    icon={<FaKaggle fontSize="medium" />}
+                    url="https://www.kaggle.com/advikmaniar"
                 />
                 <StyledIcons
                     color="instagram"

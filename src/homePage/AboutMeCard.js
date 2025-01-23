@@ -43,7 +43,7 @@ const AboutMeCard = () => {
           variant="h7"
           onClick={handleOpenSidebar}
           sx={{ color: "text.secondary", fontWeight: "bold", mb: 1, cursor: "pointer " }}>
-          My Core Skills
+          Core Skills
         </Typography>
         <Typography variant="body1" sx={{ color: "text.secondary", mb: 0 }}>
           <FaJava style={{ marginRight: "8px", color: "#f89820" }} /> API Development with Java | SpringBoot
@@ -77,16 +77,16 @@ const AboutMeCard = () => {
           }}
           endIcon={<span style={{ fontSize: '1.2em' }}>→</span>}
         >
-          Learn More
+          View More
         </Button>
         <Divider sx={{ borderColor: "text.secondary", my: 3 }} />
 
         {/* My Work Section */}
         <Typography variant="h6" sx={{ color: "text.primary", fontSize: 20, mb: 1 }}>
-          MY WORK
+          PROJECTS
         </Typography>
         <Typography variant="body1" sx={{ color: "text.secondary", mb: 2 }}>
-          Click the button below to view my work.
+          I have worked on software systems that range from web applications to machine learning models. Check out some of my work.
         </Typography>
         <Button
           variant="contained"

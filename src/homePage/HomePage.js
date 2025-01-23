@@ -3,6 +3,7 @@ import { Box, Container } from "@mui/material";
 import NameCard from "./NameCard";
 import AboutMeCard from "./AboutMeCard";
 
+
 export default function MainContent() {
 
     const bgImages = ['/bgImage1.jpg','/bgImage2.jpg'];

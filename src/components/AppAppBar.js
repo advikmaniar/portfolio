@@ -13,11 +13,11 @@ import MenuIcon from "@mui/icons-material/Menu"
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded"
 import NameLogo from "./NameLogo"
 import ColorModeIconDropdown from "../theme/ColorModeIconDropdown"
-import DownloadIcon from '@mui/icons-material/Download';
 import CVFile from '../assets/Advik_CV.pdf';
 import SkillsSidebar from "../skillsPage/SkillsSidebar";
 import { Link } from "react-router-dom";
 import { RiPagesLine } from "react-icons/ri";
+import ContactPopup from './ContactPopup'
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: "flex",
@@ -47,9 +47,9 @@ const DownloadCVButton = () => {
         color: "background.paper",
         borderRadius: "8px",
         width: "fit-content",
-        px: 2,
-        py: 1,
         fontWeight: "bold",
+        fontSize: "0.8rem",
+        padding: "5px 8px",
         boxShadow: 3,
         transition: "all 0.3s ease",
         '&:hover': {
@@ -60,7 +60,7 @@ const DownloadCVButton = () => {
       }}
       endIcon={<RiPagesLine />}
     >
-      Download CV
+      View CV
     </Button>
   )
 }
@@ -68,6 +68,7 @@ const DownloadCVButton = () => {
 export default function AppAppBar() {
   const [open, setOpen] = React.useState(false)
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [contactModalOpen, setContactModalOpen] = useState(false);
 
   const toggleSidebar = () => {
     setSidebarOpen((prev) => !prev);
@@ -77,12 +78,16 @@ export default function AppAppBar() {
     setOpen(newOpen)
   }
 
+  const handleContactModal = () => {
+    setContactModalOpen((prev) => !prev);
+  };
+
   return (
     <AppBar
       position="fixed"
       enableColorOnDark
       sx={{
-        boxShadow: 0,
+        boxShadow: 0,      
         bgcolor: "transparent",
         backgroundImage: "none",
         mt: "calc(var(--template-frame-height, 0px) + 28px)"
@@ -157,7 +162,7 @@ export default function AppAppBar() {
               <Button variant="text" color="info" size="small" onClick={toggleSidebar}>
                 SKILLS
               </Button>
-              <Button variant="text" color="info" size="small">
+              <Button variant="text" color="info" size="small" onClick={handleContactModal}>
                 CONTACT
               </Button>
             </Box>
@@ -205,7 +210,7 @@ export default function AppAppBar() {
                 <MenuItem>About</MenuItem>
                 <MenuItem>My Work</MenuItem>
                 <MenuItem onClick={toggleSidebar} >Skills</MenuItem>
-                <MenuItem>Contact</MenuItem>
+                <MenuItem onClick={handleContactModal} >Contact</MenuItem>
                 <Divider sx={{ my: 3 }} />
                 <ColorModeIconDropdown size="medium" />
               </Box>
@@ -214,6 +219,7 @@ export default function AppAppBar() {
         </StyledToolbar>
       </Container>
       <SkillsSidebar open={sidebarOpen} onClose={toggleSidebar} />
+      <ContactPopup open={contactModalOpen} onClose={handleContactModal} />
     </AppBar>
   )
 }

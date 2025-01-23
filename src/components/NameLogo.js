@@ -1,6 +1,6 @@
 import * as React from "react";
 import {  Button } from "@mui/material";
-import Logo from '../assets/nameLogo.png';
+import Logo from '../assets/logo3.PNG';
 import { Link } from "react-router-dom";
 import { alpha, useTheme } from "@mui/material/styles";
 
@@ -24,7 +24,7 @@ export default function NameLogo() {
         src={Logo}
         alt="Logo"
         style={{
-          height: "40px",
+          height: "80px",
           objectFit: "contain",
         }}
       />

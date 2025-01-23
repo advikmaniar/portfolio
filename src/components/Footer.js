@@ -1,25 +1,23 @@
-import * as React from "react"
+import React, { useState } from "react";
 import Box from "@mui/material/Box"
 import Button from "@mui/material/Button"
 import Container from "@mui/material/Container"
 import Divider from "@mui/material/Divider"
-import IconButton from "@mui/material/IconButton"
-import InputLabel from "@mui/material/InputLabel"
 import Link from "@mui/material/Link"
 import Stack from "@mui/material/Stack"
 import TextField from "@mui/material/TextField"
 import Typography from "@mui/material/Typography"
-import FacebookIcon from "@mui/icons-material/GitHub"
-import LinkedInIcon from "@mui/icons-material/LinkedIn"
-import TwitterIcon from "@mui/icons-material/X"
 import NameLogo from "./NameLogo"
+import { StyledIcons } from "../utils/utils"
+import { LinkedIn, GitHub, Instagram } from '@mui/icons-material';
+import { FaKaggle } from "react-icons/fa";
 
 function Copyright() {
   return (
     <Typography variant="body2" sx={{ color: "text.secondary", mt: 1 }}>
       {"Copyright © "}
-      <Link color="text.secondary" href="https://mui.com/">
-        Sitemark
+      <Link color="text.secondary" href="/home">
+        Advik Maniar
       </Link>
       &nbsp;
       {new Date().getFullYear()}
@@ -28,6 +26,12 @@ function Copyright() {
 }
 
 export default function Footer() {
+  const [contactModalOpen, setContactModalOpen] = useState(false);
+
+  const handleContactModal = () => {
+    setContactModalOpen((prev) => !prev);
+  };
+
   return (
     <React.Fragment>
       <Divider />
@@ -46,7 +50,8 @@ export default function Footer() {
             display: "flex",
             flexDirection: { xs: "column", sm: "row" },
             width: "100%",
-            justifyContent: "space-between"
+            justifyContent: "space-between",
+            backgroundColor: 'black'
           }}
         >
           <Box
@@ -64,39 +69,16 @@ export default function Footer() {
                 gutterBottom
                 sx={{ fontWeight: 600, mt: 2 }}
               >
-                Join the newsletter
+                Let's get in touch!
               </Typography>
-              <Typography
-                variant="body2"
-                sx={{ color: "text.secondary", mb: 2 }}
-              >
-                Subscribe for weekly updates. No spams ever!
-              </Typography>
-              <InputLabel htmlFor="email-newsletter">Email</InputLabel>
               <Stack direction="row" spacing={1} useFlexGap>
-                <TextField
-                  id="email-newsletter"
-                  hiddenLabel
-                  size="small"
-                  variant="outlined"
-                  fullWidth
-                  aria-label="Enter your email address"
-                  placeholder="Your email address"
-                  slotProps={{
-                    htmlInput: {
-                      autoComplete: "off",
-                      "aria-label": "Enter your email address"
-                    }
-                  }}
-                  sx={{ width: "250px" }}
-                />
                 <Button
                   variant="contained"
                   color="primary"
                   size="small"
                   sx={{ flexShrink: 0 }}
                 >
-                  Subscribe
+                  Connect
                 </Button>
               </Stack>
             </Box>
@@ -108,60 +90,17 @@ export default function Footer() {
               gap: 1
             }}
           >
-            <Typography variant="body2" sx={{ fontWeight: "medium" }}>
-              Product
-            </Typography>
             <Link color="text.secondary" variant="body2" href="#">
-              Features
+              Home
             </Link>
             <Link color="text.secondary" variant="body2" href="#">
-              Testimonials
+              About
             </Link>
             <Link color="text.secondary" variant="body2" href="#">
-              Highlights
+              My Work
             </Link>
             <Link color="text.secondary" variant="body2" href="#">
-              Pricing
-            </Link>
-            <Link color="text.secondary" variant="body2" href="#">
-              FAQs
-            </Link>
-          </Box>
-          <Box
-            sx={{
-              display: { xs: "none", sm: "flex" },
-              flexDirection: "column",
-              gap: 1
-            }}
-          >
-            <Typography variant="body2" sx={{ fontWeight: "medium" }}>
-              Company
-            </Typography>
-            <Link color="text.secondary" variant="body2" href="#">
-              About us
-            </Link>
-            <Link color="text.secondary" variant="body2" href="#">
-              Careers
-            </Link>
-            <Link color="text.secondary" variant="body2" href="#">
-              Press
-            </Link>
-          </Box>
-          <Box
-            sx={{
-              display: { xs: "none", sm: "flex" },
-              flexDirection: "column",
-              gap: 1
-            }}
-          >
-            <Typography variant="body2" sx={{ fontWeight: "medium" }}>
-              Legal
-            </Typography>
-            <Link color="text.secondary" variant="body2" href="#">
-              Terms
-            </Link>
-            <Link color="text.secondary" variant="body2" href="#">
-              Privacy
+              Skills
             </Link>
             <Link color="text.secondary" variant="body2" href="#">
               Contact
@@ -196,33 +135,34 @@ export default function Footer() {
             useFlexGap
             sx={{ justifyContent: "left", color: "text.secondary" }}
           >
-            <IconButton
-              color="inherit"
-              size="small"
-              href="https://github.com/mui"
-              aria-label="GitHub"
-              sx={{ alignSelf: "center" }}
-            >
-              <FacebookIcon />
-            </IconButton>
-            <IconButton
-              color="inherit"
-              size="small"
-              href="https://x.com/MaterialUI"
-              aria-label="X"
-              sx={{ alignSelf: "center" }}
-            >
-              <TwitterIcon />
-            </IconButton>
-            <IconButton
-              color="inherit"
-              size="small"
-              href="https://www.linkedin.com/company/mui/"
-              aria-label="LinkedIn"
-              sx={{ alignSelf: "center" }}
-            >
-              <LinkedInIcon />
-            </IconButton>
+            <StyledIcons
+              color="linkedin"
+              bgColor="#0077b5"
+              hoverColor="#005c8a"
+              icon={<LinkedIn fontSize="medium" />}
+              url="https://www.linkedin.com/in/advikmaniar/"
+            />
+            <StyledIcons
+              color="github"
+              bgColor="#333"
+              hoverColor="#444"
+              icon={<GitHub fontSize="medium" />}
+              url="https://github.com/advikmaniar"
+            />
+            <StyledIcons
+              color="kaggle"
+              bgColor="#1da1f2"
+              hoverColor="#1991c6"
+              icon={<FaKaggle fontSize="medium" />}
+              url="https://www.kaggle.com/advikmaniar"
+            />
+            <StyledIcons
+              color="instagram"
+              bgColor="#e4405f"
+              hoverColor="#b32f46"
+              icon={<Instagram fontSize="medium" />}
+              url="https://www.instagram.com/advik0220/"
+            />
           </Stack>
         </Box>
       </Container>
