@@ -2,3 +2,7 @@
 1. Modify Footer
 2. Add details to experience
 3. Generate pictures for website
+4. Template for Email
+5. Sidebar icon on main page
+6. Body should be hidden under the header - Main Layout
+7. Use Redux for counting likes

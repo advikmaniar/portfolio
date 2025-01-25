@@ -14,6 +14,7 @@ export default function MainContent() {
             sx={{
                 position: "relative", 
                 display: "flex",
+                flexDirection: { xs: "column", sm: "row" },
                 justifyContent: "center", 
                 alignItems: "center", 
                 p: { xs: "30px 10px", sm: "100px 0px 100px 0px" },
