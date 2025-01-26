@@ -6,9 +6,9 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 const CertificateCarousel = () => {
     const bgImages = [
-        '/Certificate1.png', '/Certificate2.png', '/Certificate3.jpg',
-        '/Certificate4.png', '/Certificate5.png', '/Certificate6.png',
-        '/Certificate7.png', '/Certificate8.jpeg'
+        '/Certificates/Certificate1.png', '/Certificates/Certificate2.png', '/Certificates/Certificate3.jpg',
+        '/Certificates/Certificate4.png', '/Certificates/Certificate5.png', '/Certificates/Certificate6.png',
+        '/Certificates/Certificate7.png', '/Certificates/Certificate8.jpeg'
     ];
     const imageCaptions = [
         'Natural Language Processing in TensorFlow', 'Intermediate Machine Learning', 'Python Bootcamp',

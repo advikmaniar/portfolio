@@ -1,11 +1,18 @@
 import * as React from "react"
-import { Typography, Box, Container, } from '@mui/material';
+import { Button, Typography, Box, Container, } from '@mui/material';
 import SoftwareProjects from "./SoftwareProjects";
+import DataProjects from "./DataProjects";
 import { LuFileSpreadsheet } from "react-icons/lu";
-import Logo from "../assets/portfolioIcon.PNG";
+import { IoChevronForwardOutline, IoChevronBackOutline } from "react-icons/io5";
 
 
 export default function MainContentProjects() {
+
+  const [showDataProjects, setShowDataProjects] = React.useState(false);
+
+  const handleButtonClick = () => {
+    setShowDataProjects(true);
+  };
 
   return (
     <Container
@@ -13,20 +20,19 @@ export default function MainContentProjects() {
         display: "flex",
         flexDirection: "column",
         gap: { xs: 2, sm: 1 },
-        // bgcolor: "red",
         p: { xs: "30px 10px", sm: "0px 20px 0px 20px" },
         alignItems: "left",
       }}
     >
       <Box sx={{
         display: "flex",
-        flexDirection: "row",
+        flexDirection: { xs: "column", sm: "row" },
         alignItems: "center",
         borderRadius: '10px',
         p: '10px',
         opacity: 0.9,
         boxShadow: 3,
-        width: 'fit-content',
+        width: 'space-between',
         backgroundColor: 'background.paper',
       }}>
         <Typography variant="h1" component="div"
@@ -38,15 +44,32 @@ export default function MainContentProjects() {
             fontFamily: 'Cursive',
           }}
         >
-          Welcome to my <span style={{ animation: 'pulse 3s infinite, zoomIn 2s 1' }}>Portfolio📄</span>
+          Welcome to my <span style={{ animation: 'pulse 5s infinite, zoomIn 2s 1' }}>Portfolio📄</span>
           !
         </Typography>
+        <Button
+          variant="contained"
+          color="primary"
+          size="large"
+          sx={{
+            marginLeft: { xs: 0, sm: 'auto' },
+            marginTop: { xs: 2, sm: 0 },
+            fontWeight: 'bold',
+            fontSize: '1rem',
+            textTransform: 'none',
+          }}
+          startIcon={showDataProjects ? <IoChevronBackOutline /> : null}
+          endIcon={!showDataProjects ? <IoChevronForwardOutline /> : null}
+          onClick={() => setShowDataProjects(!showDataProjects)}
+        >
+          {showDataProjects ? "Back to Apps" : "Data Analysis Projects"}
+        </Button>
       </Box>
       <Box sx={{
         flex: { xs: 1, sm: 5 },
         width: "100%"
       }}>
-        <SoftwareProjects />
+        {showDataProjects ? <DataProjects /> : <SoftwareProjects />}
       </Box>
       <style>
         {`

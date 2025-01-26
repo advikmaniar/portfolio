@@ -11,7 +11,7 @@ export default function MainContentAboutMe() {
   const [showWorkExperience, setShowWorkExperience] = React.useState(false);
   const [showEducation, setShowEducation] = React.useState(false);
 
-  const bgImages = ['/bgImage1.jpg', '/bgImage2.jpg'];
+  const bgImages = ['/BackgroundImages/bgImage1.jpg', '/BackgroundImages/bgImage2.jpg'];
   const randomBgImage = bgImages[Math.floor(Math.random() * bgImages.length)];
 
   return (

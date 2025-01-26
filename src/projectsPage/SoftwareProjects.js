@@ -8,10 +8,11 @@ import { FaPython } from "react-icons/fa";
 import { FaJava, FaReact, FaHtml5, FaCss3Alt, FaNode } from "react-icons/fa";
 import { FaFlutter } from "react-icons/fa6";
 import { IoLogoFirebase } from "react-icons/io5";
-import { SiMongodb, SiMysql, SiDjango } from "react-icons/si";
+import { SiDialogflow, SiTwilio, SiMongodb, SiMysql, SiDjango } from "react-icons/si";
 import { FaAws } from "react-icons/fa";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Tooltip from '@mui/material/Tooltip';
+import { IoIosClose } from "react-icons/io";
 
 const StyledIcons = ({ color, bgColor, hoverColor, icon, url }) => {
     return (
@@ -57,10 +58,10 @@ const softwareProjects = [
         affiliation: 'Self',
         textSecondary: 'Interview Platform for Job Seekers and Employers',
         description: [
-            'Developed a real-time Interview Platform using React.js, Node.js, MongoDB, and Twilio', 
-            'Implemented secure authentication and authorization using JWT and OAuth2.0',
-            'Version Control and CI/CD with Git - Jenkins - Openshift - XLD',
-            '15+ successful production deployments'
+            'Real-time interview platform for employers to conduct interviews.',
+            'Secure authentication and authorization using JWT and OAuth2.0.',
+            'Interface designed with Material UI and React.js for a seamless user experience.',
+            'Deployed on AWS EC2 and S3 for scalability and reliability.',
         ],
         tools: [
             'React.js',
@@ -71,14 +72,14 @@ const softwareProjects = [
             'APIs',
 
         ],
-        images: ['/EZInterview_Image1.png', '/EZInterview_Image2.png', '/EZInterview_Image3.png', '/EZInterview_Image4.png', '/EZInterview_Image5.png'],
+        images: ['/EZInterviewImages/EZInterview_Image1.png', '/EZInterviewImages/EZInterview_Image2.png', '/EZInterviewImages/EZInterview_Image3.png', '/EZInterviewImages/EZInterview_Image4.png', '/EZInterview_Image5.png'],
         github: 'https://github.com/advikmaniar/interview-portal'
     },
     {
         date: 'May 2021',
         name: 'FarmApp',
         affiliation: 'Mumbai University',
-        textSecondary: 'Android App developed with Flutter',
+        textSecondary: 'Android App developed with Java and Flutter',
         description: [
             'IoT Based Smart Irrigation System',
             '',
@@ -89,19 +90,17 @@ const softwareProjects = [
             'Python',
             'Google Firebase',
             'Flutter',
-            'Android Studio',
-            'APIs',
             'AWS'
         ],
-        images: ['/FarmApp_Image1.png', '/ezinterview2.png'],
+        images: ['/FarmAppImages/FarmApp_Image1.png', '/FarmAppImages/FarmApp_Image2.png'],
         github: 'https://github.com/advikmaniar/FarmApp'
     },
 
     {
         date: 'December 2022',
         name: 'Only Football',
-        affiliation: 'Self',
-        textSecondary: 'E-commerce website developed using Python and Django',
+        affiliation: 'New York Institute of Technology',
+        textSecondary: 'E-commerce website for football merchandise',
         description: [
             'E-commerce website developed using Python and Django to browse, add-to-cart, and order football merchandise. Included functionality like Stripe payment.',
             'Integrated MongoDB to store user data and order history, and AWS to deploy the website.',
@@ -112,10 +111,9 @@ const softwareProjects = [
             'MySQL',
             'MongoDB',
             'Stripe',
-            'APIs',
             'AWS'
         ],
-        images: ['/OnlyFootball_Image1.png', '/OnlyFootball_Image2.png'],
+        images: ['/OnlyFootballImages/OnlyFootball_Image1.png', '/OnlyFootballImages/OnlyFootball_Image2.png'],
         github: 'https://github.com/advikmaniar/Only-Football-Website'
     },
     {
@@ -135,10 +133,10 @@ const softwareProjects = [
             'Node.js',
             'Redux',
             'Google DialogFlow',
-            'APIs',
             'AWS'
         ],
-        images: ['/ReactPortfolio_Image1.png', '/ezinterview2.png'],
+        images: ['/PersonalPortfolioImages/ReactPortfolio_Image1.png', '/PersonalPortfolioImages/ReactPortfolio_Image2.png',
+            '/PersonalPortfolioImages/ReactPortfolio_Image3.png', '/PersonalPortfolioImages/ReactPortfolio_Image4.png'],
         github: 'https://github.com/advikmaniar/portfolio'
     },
 ];
@@ -191,10 +189,9 @@ const SoftwareProjects = () => {
             </Typography>
             <Box
                 sx={{
-                    display:"flex",
-                    flexDirection:"column",
-                    width:"100%",
-                    // flexWrap:"wrap",
+                    display: "flex",
+                    flexDirection: "column",
+                    width: "100%",
                 }}
             >
                 {[0, 1].map((row) => (
@@ -208,12 +205,12 @@ const SoftwareProjects = () => {
                             <Box key={index}
                                 sx={{
                                     height: expanded === `${row}-${index}` ? '60vh' : expanded ? "50px" : "350px",
-                                    width: expanded === `${row}-${index}` ? '100vh' :  expanded ? "50px" : "100%",
+                                    width: expanded === `${row}-${index}` ? '100vh' : expanded ? "50px" : "100%",
                                     transition: 'all 0.3s ease',
                                     margin: '10px',
                                     position: 'relative',
                                     '&:hover::after': {
-                                        content: `"${project.name}"`,
+                                        content: expanded === `${row}-${index}` ? '""' : `"${project.name}"`,
                                         position: 'absolute',
                                         color: 'white',
                                         padding: '2px',
@@ -235,7 +232,7 @@ const SoftwareProjects = () => {
                                         alignItems: 'left',
                                         transition: 'all 0.3s ease',
                                         backgroundColor: 'background.paper',
-                                        '&:hover': {
+                                        '&:hover': expanded === `${row}-${index}` ? {} : {
                                             boxShadow: 3,
                                             transform: "scale(1.01)",
                                             cursor: 'pointer',
@@ -247,7 +244,7 @@ const SoftwareProjects = () => {
                                         {expanded === `${row}-${index}` && (
                                             <>
                                                 <IconButton
-                                                    sx={{ position: 'absolute', top: '50%', left: 0, zIndex: 2 }}
+                                                    sx={{ position: 'absolute', top: '50%', left: 0, zIndex: 2, border: '0px', }}
                                                     onClick={(e) => {
                                                         e.stopPropagation();
                                                         setExpandedImageIndex((prev) => (prev === 0 ? project.images.length - 1 : prev - 1));
@@ -256,7 +253,7 @@ const SoftwareProjects = () => {
                                                     &lt;
                                                 </IconButton>
                                                 <IconButton
-                                                    sx={{ position: 'absolute', top: '50%', right: 0, zIndex: 2 }}
+                                                    sx={{ position: 'absolute', top: '50%', right: 0, zIndex: 2, border: '0px', }}
                                                     onClick={(e) => {
                                                         e.stopPropagation();
                                                         setExpandedImageIndex((prev) => (prev === project.images.length - 1 ? 0 : prev + 1));
@@ -264,17 +261,33 @@ const SoftwareProjects = () => {
                                                 >
                                                     &gt;
                                                 </IconButton>
+                                                <IconButton
+                                                    sx={{
+                                                        position: 'absolute',
+                                                        top: 0,
+                                                        right: 0,
+                                                        borderRadius: '10px',
+                                                        border: '0px',
+                                                        zIndex: 2
+                                                    }}
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        setExpanded(null);
+                                                    }}
+                                                >
+                                                    <IoIosClose />
+                                                </IconButton>
                                             </>
                                         )}
                                         <CardMedia
                                             component="img"
                                             image={project.images[expanded === `${row}-${index}` ? expandedImageIndex : 0]}
                                             alt={`${project.name} image ${expanded === `${row}-${index}` ? expandedImageIndex + 1 : 1}`}
-                                            sx={{  
+                                            sx={{
                                                 height: '100%',
-                                                width: '100%', 
+                                                width: '100%',
                                                 objectFit: expanded === `${row}-${index}` ? "contain" : "fit",
-                                                borderRadius: '10px 10px 0px 0px' 
+                                                borderRadius: '10px 10px 0px 0px'
                                             }}
                                         />
                                     </Box>
@@ -298,15 +311,41 @@ const SoftwareProjects = () => {
                                                     display: 'flex',
                                                     flexDirection: 'row',
                                                     justifyContent: 'space-between',
+                                                    alignItems: 'center',
                                                 }}>
                                                 <Box>
-                                                    <Typography variant="h5" component="div" sx={{ color: 'text.primary', fontWeight: 'bold' }}>
+                                                    <Typography variant="h5" component="div"
+                                                        sx={{
+                                                            color: 'text.primary',
+                                                            fontWeight: 'bold',
+                                                            display: 'flex',
+                                                            alignItems: 'center',
+                                                            flexDirection: 'row',
+                                                            gap: '22px',
+                                                        }}
+                                                    >
                                                         {project.name}
+                                                        {project.affiliation !== 'Self' && (
+                                                            <Box sx={{
+                                                                display: 'flex',
+                                                                alignContent: 'center',
+                                                                backgroundColor: '#77dd77', // pastel green color code
+                                                                borderRadius: '20px',
+                                                                px: '5px',
+                                                                py: '2px',
+                                                                boxShadow: 3,
+                                                            }}>
+                                                                <Typography variant="body2" color="black">
+                                                                    {project.affiliation}
+                                                                </Typography>
+                                                            </Box>
+                                                        )}
                                                     </Typography>
                                                     <Typography variant="body2" color="text.secondary">
                                                         {project.textSecondary}
                                                     </Typography>
                                                 </Box>
+
                                                 <Box
                                                     sx={{
                                                         display: 'flex',
@@ -330,20 +369,22 @@ const SoftwareProjects = () => {
                                                     mt: 0
                                                 }}
                                             >
-                                                {project.tools.slice(0, 4).map((tool, i) => {
+                                                {project.tools.slice(0, expanded === `${row}-${index}` ? project.tools.length : 4).map((tool, i) => {
                                                     const icons = {
-                                                        'React.js': <FaReact style={{ marginRight: "8px", color: "#61DBFB", fontSize: "2.5rem" }} />,
-                                                        'Node.js': <FaNode style={{ marginRight: "8px", color: "#68A063", fontSize: "2.5rem" }} />,
-                                                        'Java': <FaJava style={{ marginRight: "8px", color: "#f89820", fontSize: "2.5rem" }} />,
-                                                        'Python': <FaPython style={{ marginRight: "8px", color: "#306998", fontSize: "2.5rem" }} />,
-                                                        'MongoDB': <SiMongodb style={{ marginRight: "8px", color: "#3FA037", fontSize: "1.5rem" }} />,
-                                                        'AWS': <FaAws style={{ marginRight: "8px", color: "#FF9900", fontSize: "2.5rem" }} />,
-                                                        'Flutter': <FaFlutter style={{ marginRight: "8px", color: "#02569B", fontSize: "2.5rem" }} />,
-                                                        'Google Firebase': <IoLogoFirebase style={{ marginRight: "8px", color: "#f5820D", fontSize: "2.5rem" }} />,
-                                                        'HTML5': <FaHtml5 style={{ marginRight: "8px", color: "#C42C05", fontSize: "2.5rem" }} />,
-                                                        'CSS3': <FaCss3Alt style={{ marginRight: "8px", color: "#006EBB", fontSize: "2.5rem" }} />,
-                                                        'Django': <SiDjango style={{ marginRight: "8px", color: "#2BA977", fontSize: "2.5rem" }} />,
-                                                        'MySQL': <SiMysql style={{ marginRight: "8px", color: "#61DBFB", fontSize: "2.5rem" }} />,
+                                                        'React.js': <FaReact style={{ marginRight: "6px", color: "#61DBFB", fontSize: "2.5rem" }} />,
+                                                        'Node.js': <FaNode style={{ marginRight: "6px", color: "#68A063", fontSize: "2.5rem" }} />,
+                                                        'Java': <FaJava style={{ marginRight: "6px", color: "#f89820", fontSize: "2.5rem" }} />,
+                                                        'Python': <FaPython style={{ marginRight: "6px", color: "#306998", fontSize: "2.5rem" }} />,
+                                                        'MongoDB': <SiMongodb style={{ marginRight: "6px", color: "#3FA037", fontSize: "1.5rem" }} />,
+                                                        'AWS': <FaAws style={{ marginRight: "6px", color: "#FF9900", fontSize: "2.5rem" }} />,
+                                                        'Flutter': <FaFlutter style={{ marginRight: "6px", color: "#02569B", fontSize: "2.5rem" }} />,
+                                                        'Google Firebase': <IoLogoFirebase style={{ marginRight: "6px", color: "#f5820D", fontSize: "2.5rem" }} />,
+                                                        'HTML5': <FaHtml5 style={{ marginRight: "6px", color: "#C42C05", fontSize: "2.5rem" }} />,
+                                                        'CSS3': <FaCss3Alt style={{ marginRight: "6px", color: "#006EBB", fontSize: "2.5rem" }} />,
+                                                        'Django': <SiDjango style={{ marginRight: "6px", color: "#2BA977", fontSize: "2.5rem" }} />,
+                                                        'MySQL': <SiMysql style={{ marginRight: "6px", color: "#61DBFB", fontSize: "2.5rem" }} />,
+                                                        'Twilio': <SiTwilio style={{ marginRight: "6px", color: "#F22F46", fontSize: "2.5rem" }} />,
+                                                        'Google DialogFlow': <SiDialogflow style={{ marginRight: "6px", color: "#f5820D", fontSize: "2.5rem" }} />,
                                                     };
                                                     return (
                                                         <Tooltip title={tool} key={i}>
@@ -362,17 +403,20 @@ const SoftwareProjects = () => {
                                                     );
                                                 })}
                                                 {expanded === `${row}-${index}` && (
-                                                    <Box 
-                                                    sx={{
-                                                        display: 'flex',
-                                                        flexDirection: 'column',
-                                                        justifyContent: 'center',
-                                                        alignItems: 'center',
-                                                        backgroundColor: 'blue',
-                                                    }}>
+                                                    <Box
+                                                        sx={{
+                                                            display: 'flex',
+                                                            flexDirection: 'column',
+                                                            justifyContent: 'left',
+                                                            alignItems: 'left',
+                                                            backgroundColor: 'blue',
+                                                        }}>
                                                         Description
                                                         {project.description.map((desc, i) => (
-                                                            <Typography key={i} variant="body2" color="text.secondary">
+                                                            <Typography key={i} variant="body2" color="text.secondary"
+                                                                sx={{
+                                                                    fontSize: '1rem',
+                                                                }}>
                                                                 <li>{desc}</li>
                                                             </Typography>
                                                         ))}
