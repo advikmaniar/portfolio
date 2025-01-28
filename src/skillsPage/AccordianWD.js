@@ -8,7 +8,7 @@ import {
     AccordionDetails,
 } from "@mui/material";
 
-import { SiRedhatopenshift, SiDialogflow, SiDailydotdev, SiMongodb, SiMysql, SiDjango, SiSpringboot, SiStreamlit } from "react-icons/si";
+import { SiRedux, SiRedhatopenshift, SiDialogflow, SiDailydotdev, SiMongodb, SiMysql, SiDjango, SiSpringboot, SiStreamlit } from "react-icons/si";
 import { FaJenkins, FaBitbucket, FaGithub, FaJava, FaReact, FaHtml5, FaCss3Alt, FaNode } from "react-icons/fa";
 import { IoLogoFirebase, IoLogoJavascript } from "react-icons/io5";
 import { TbApi } from "react-icons/tb";
@@ -160,6 +160,10 @@ const AccordianWD = ({ expandedPanels, handleChange }) => {
                         <ListItem sx={{ padding: "0px 10px", marginBottom: 0.5 }}>
                             <FaReact style={{ marginRight: "8px", color: "#61DBFB", fontSize: "1.5rem" }} />
                             <ListItemText primary="React.js" />
+                        </ListItem>
+                        <ListItem sx={{ padding: "0px 10px", marginBottom: 0.5 }}>
+                            <SiRedux  style={{ marginRight: "8px", color: "#754eb9", fontSize: "1.5rem" }} />
+                            <ListItemText primary="Redux" />
                         </ListItem>
                         <ListItem sx={{ padding: "0px 10px", marginBottom: 0.5 }}>
                             <SiDjango style={{ marginRight: "8px", color: "#2BA977", fontSize: "1.5rem" }} />

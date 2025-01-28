@@ -8,47 +8,13 @@ import { FaPython } from "react-icons/fa";
 import { FaJava, FaReact, FaHtml5, FaCss3Alt, FaNode } from "react-icons/fa";
 import { FaFlutter } from "react-icons/fa6";
 import { IoLogoFirebase } from "react-icons/io5";
-import { SiDialogflow, SiTwilio, SiMongodb, SiMysql, SiDjango } from "react-icons/si";
+import { SiRedux, SiDialogflow, SiTwilio, SiMongodb, SiMysql, SiDjango } from "react-icons/si";
 import { FaAws } from "react-icons/fa";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Tooltip from '@mui/material/Tooltip';
 import { IoIosClose } from "react-icons/io";
-
-const StyledIcons = ({ color, bgColor, hoverColor, icon, url }) => {
-    return (
-        <a href={url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
-            <IconButton
-                sx={{
-                    borderRadius: "50%",
-                    backgroundColor: bgColor,
-                    '&:hover': {
-                        backgroundColor: hoverColor,
-                        transform: "scale(1.2)",
-                        boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.3)",
-                    },
-                    '&:hover::after': {
-                        content: '"View Code"',
-                        position: 'absolute',
-                        backgroundColor: 'rgba(0, 0, 0, 0.7)',
-                        color: 'white',
-                        padding: '2px 8px',
-                        borderRadius: '10px',
-                        top: '100%',
-                        left: '50%',
-                        transform: 'translateX(-50%)',
-                        whiteSpace: 'nowrap',
-                        zIndex: 1,
-                        fontSize: '0.70rem',
-                    },
-                    transition: "all 0.3s ease",
-                }}
-                aria-label={color}
-            >
-                {React.cloneElement(icon, { sx: { color: "white" } })}
-            </IconButton>
-        </a>
-    );
-};
+import { FcAndroidOs } from "react-icons/fc";
+import { StyledIconsPortfolio } from '../utils/utils';
 
 const softwareProjects = [
 
@@ -60,7 +26,8 @@ const softwareProjects = [
         description: [
             'Real-time interview platform for employers to conduct interviews.',
             'Secure authentication and authorization using JWT and OAuth2.0.',
-            'Interface designed with Material UI and React.js for a seamless user experience.',
+            'Designed with Material UI and React.js for a seamless user experience.',
+            'Integrated Twilio to establish secure meeting rooms for interviews.',
             'Deployed on AWS EC2 and S3 for scalability and reliability.',
         ],
         tools: [
@@ -87,12 +54,12 @@ const softwareProjects = [
         ],
         tools: [
             'Java',
+            'Android',
             'Python',
             'Google Firebase',
             'Flutter',
-            'AWS'
         ],
-        images: ['/FarmAppImages/FarmApp_Image1.png', '/FarmAppImages/FarmApp_Image2.png'],
+        images: ['/FarmAppImages/FarmApp_Image1.png', '/FarmAppImages/FarmApp_Image2.png', '/FarmAppImages/FarmApp_Image3.png', '/FarmAppImages/FarmApp_Image4.png'],
         github: 'https://github.com/advikmaniar/FarmApp'
     },
 
@@ -133,7 +100,7 @@ const softwareProjects = [
             'Node.js',
             'Redux',
             'Google DialogFlow',
-            'AWS'
+            'AWS',
         ],
         images: ['/PersonalPortfolioImages/ReactPortfolio_Image1.png', '/PersonalPortfolioImages/ReactPortfolio_Image2.png',
             '/PersonalPortfolioImages/ReactPortfolio_Image3.png', '/PersonalPortfolioImages/ReactPortfolio_Image4.png'],
@@ -185,7 +152,7 @@ const SoftwareProjects = () => {
                     fontFamily: 'Cursive',
                 }}
             >
-                Some of the websites and mobile applications I have developed. Click a project to view more details &gt;
+                Some of the websites and mobile applications I have developed.
             </Typography>
             <Box
                 sx={{
@@ -212,13 +179,12 @@ const SoftwareProjects = () => {
                                     '&:hover::after': {
                                         content: expanded === `${row}-${index}` ? '""' : `"${project.name}"`,
                                         position: 'absolute',
-                                        color: 'white',
                                         padding: '2px',
                                         borderRadius: '10px',
                                         zIndex: 1,
                                     },
                                 }}
-                                onClick={() => handleExpandClick(row, index)}
+
                             >
                                 <Card
                                     sx={{
@@ -289,6 +255,7 @@ const SoftwareProjects = () => {
                                                 objectFit: expanded === `${row}-${index}` ? "contain" : "fit",
                                                 borderRadius: '10px 10px 0px 0px'
                                             }}
+                                            onClick={() => handleExpandClick(row, index)}
                                         />
                                     </Box>
                                     <CardContent
@@ -300,6 +267,7 @@ const SoftwareProjects = () => {
                                             alignItems: 'left',
                                             height: expanded === `${row}-${index}` ? '50%' : '40%',
                                         }}
+                                        onClick={() => handleExpandClick(row, index)}
                                     >
                                         <Box sx={{
                                             flexGrow: 1,
@@ -345,28 +313,21 @@ const SoftwareProjects = () => {
                                                         {project.textSecondary}
                                                     </Typography>
                                                 </Box>
-
-                                                <Box
-                                                    sx={{
-                                                        display: 'flex',
-                                                        alignItems: 'center',
-                                                    }}
-                                                >
-                                                    <StyledIcons
-                                                        color="github"
-                                                        bgColor="#333"
-                                                        hoverColor="#444"
-                                                        icon={<GitHub fontSize="medium" />}
-                                                        url={project.github}
-                                                    />
-                                                </Box>
+                                                <StyledIconsPortfolio
+                                                    color="github"
+                                                    bgColor="#333"
+                                                    hoverColor="#444"
+                                                    icon={<GitHub fontSize="medium" />}
+                                                    url={project.github}
+                                                    onClick={(event) => event.stopPropagation()}
+                                                />
                                             </Container>
-                                            <Divider sx={{ my: 1 }} />
+                                            <Divider sx={{ m: 1 }} />
                                             <Box
                                                 sx={{
                                                     display: 'flex',
                                                     justifyContent: 'center',
-                                                    mt: 0
+                                                    mt: 0,
                                                 }}
                                             >
                                                 {project.tools.slice(0, expanded === `${row}-${index}` ? project.tools.length : 4).map((tool, i) => {
@@ -385,12 +346,16 @@ const SoftwareProjects = () => {
                                                         'MySQL': <SiMysql style={{ marginRight: "6px", color: "#61DBFB", fontSize: "2.5rem" }} />,
                                                         'Twilio': <SiTwilio style={{ marginRight: "6px", color: "#F22F46", fontSize: "2.5rem" }} />,
                                                         'Google DialogFlow': <SiDialogflow style={{ marginRight: "6px", color: "#f5820D", fontSize: "2.5rem" }} />,
+                                                        'Redux': <SiRedux style={{ marginRight: "6px", color: "#764ABC", fontSize: "2.5rem" }} />,
+                                                        'Android': <FcAndroidOs style={{ marginRight: "6px", color: "#7db343", fontSize: "2.5rem" }} />,
                                                     };
                                                     return (
                                                         <Tooltip title={tool} key={i}>
                                                             <Box
                                                                 sx={{
                                                                     m: 1,
+                                                                    width: 'fit-content',
+                                                                    flexWrap: "wrap",
                                                                     '&:hover': {
                                                                         transform: 'scale(1.2)',
                                                                         transition: 'transform 0.2s ease-in-out'
@@ -409,9 +374,10 @@ const SoftwareProjects = () => {
                                                             flexDirection: 'column',
                                                             justifyContent: 'left',
                                                             alignItems: 'left',
-                                                            backgroundColor: 'blue',
+                                                            backgroundColor: 'background.default',
+                                                            borderRadius: '10px',
+                                                            padding: '10px',
                                                         }}>
-                                                        Description
                                                         {project.description.map((desc, i) => (
                                                             <Typography key={i} variant="body2" color="text.secondary"
                                                                 sx={{
@@ -431,6 +397,29 @@ const SoftwareProjects = () => {
                     </Box>
                 ))}
             </Box>
+            <Divider sx={{ mt: 1 }} />
+            <Typography variant="h6" color="text.secondary"
+                sx={{
+                    mt: 1,
+                    color: 'text.secondary',
+                    backgroundColor: 'background.paper',
+                    fontWeight: 'bold',
+                    textAlign: 'left',
+                    width: 'fit-content',
+                    borderRadius: '10px',
+                    p: '5px',
+                    fontFamily: 'Cursive',
+                    justifyContent: 'center',
+                }}>
+                To view more projects you can navigate to my GitHub Profile here -&gt; {' '}
+                <StyledIconsPortfolio
+                    color="github"
+                    bgColor="#333"
+                    hoverColor="#444"
+                    icon={<GitHub fontSize="medium" />}
+                    url="https://github.com/advikmaniar?tab=repositories"
+                />
+            </Typography>
         </Container>
     );
 };

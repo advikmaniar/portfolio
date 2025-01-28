@@ -58,3 +58,44 @@ export const StyledIcons = ({ color, bgColor, hoverColor, icon, url }) => {
         </a>
     );
 };
+
+export const StyledIconsPortfolio = ({ color, bgColor, hoverColor, icon, url }) => {
+    return (
+        <a
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ textDecoration: "none" }}
+            onClick={(event) => event.stopPropagation()}>
+            <IconButton
+                sx={{
+                    borderRadius: "50%",
+                    backgroundColor: bgColor,
+                    '&:hover': {
+                        backgroundColor: hoverColor,
+                        transform: "scale(1.2)",
+                        boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.3)",
+                    },
+                    '&:hover::after': {
+                        content: '"View Code"',
+                        position: 'absolute',
+                        backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                        color: 'white',
+                        padding: '2px 8px',
+                        borderRadius: '10px',
+                        top: '100%',
+                        left: '50%',
+                        transform: 'translateX(-50%)',
+                        whiteSpace: 'nowrap',
+                        zIndex: 1,
+                        fontSize: '0.70rem',
+                    },
+                    transition: "all 0.3s ease",
+                }}
+                aria-label={color}
+            >
+                {React.cloneElement(icon, { sx: { color: "white" } })}
+            </IconButton>
+        </a>
+    );
+};

@@ -5,46 +5,13 @@ import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import { FaKaggle, FaPython } from "react-icons/fa";
-import { SiPlotly, SiNumpy, SiScikitlearn, SiTensorflow, SiPandas, SiMongodb, SiMysql, SiStreamlit, SiTableau, SiKaggle } from "react-icons/si";
+import { SiScipy, SiPlotly, SiNumpy, SiScikitlearn, SiTensorflow, SiPandas, SiMongodb, SiMysql, SiStreamlit, SiTableau, SiKaggle } from "react-icons/si";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Tooltip from '@mui/material/Tooltip';
 import { IoIosClose } from "react-icons/io";
+import { StyledIconsPortfolio } from '../utils/utils';
 
-const StyledIcons = ({ color, bgColor, hoverColor, icon, url }) => {
-    return (
-        <a href={url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
-            <IconButton
-                sx={{
-                    borderRadius: "50%",
-                    backgroundColor: bgColor,
-                    '&:hover': {
-                        backgroundColor: hoverColor,
-                        transform: "scale(1.2)",
-                        boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.3)",
-                    },
-                    '&:hover::after': {
-                        content: '"View Code"',
-                        position: 'absolute',
-                        backgroundColor: 'rgba(0, 0, 0, 0.7)',
-                        color: 'white',
-                        padding: '2px 8px',
-                        borderRadius: '10px',
-                        top: '100%',
-                        left: '50%',
-                        transform: 'translateX(-50%)',
-                        whiteSpace: 'nowrap',
-                        zIndex: 1,
-                        fontSize: '0.70rem',
-                    },
-                    transition: "all 0.3s ease",
-                }}
-                aria-label={color}
-            >
-                {React.cloneElement(icon, { sx: { color: "white" } })}
-            </IconButton>
-        </a>
-    );
-};
+
 
 const dataProjects = [
     {
@@ -101,7 +68,7 @@ const dataProjects = [
             'Python',
             'Sklearn',
             'Pandas',
-            'Numpy',
+            'Scipy',
             'Plotly',
         ],
         images: ['/DataReaderImages/DataReader_Image1.png', '/DataReaderImages/DataReader_Image2.png', '/DataReaderImages/DataReader_Image3.png', '/DataReaderImages/DataReader_Image4.png',],
@@ -113,19 +80,21 @@ const dataProjects = [
         affiliation: 'New York Institute of Technology',
         textSecondary: 'Recommendation System for Anime Lovers',
         description: [
-            'Developed a hybrid recommendation system using collaborative filtering / content based methods which uses User-User and Item-Item similarity index.',
-            'Analyzed and visualized data using Python libraries like Pandas, Numpy, Matplotlib, and Seaborn.',
+            'Hybrid recommendation system developed with collaborative filtering algorithms.',
+            'Visualized and analyzed data with Plotly and Matplotlib.',
+            'Model trained on 20,000+ user reviews and ratings from MyAnimeList API.',
+            'User-based and Item-based CF to recommend anime based on user preferences.',
+            'Achieved an accuracy of 80% on the test dataset.'
 
         ],
         tools: [
             'Python',
-            'Node.js',
-            'Redux',
-            'Google DialogFlow',
-            'APIs',
-            'AWS'
+            'Pandas',
+            'Sklearn',
+            'Plotly',
+
         ],
-        images: ['/EZInterview_Image1.png', '/EZInterview_Image2.png', '/EZInterview_Image3.png', '/EZInterview_Image4.png', '/EZInterview_Image5.png'],
+        images: ['/AnimeHouseImages/AnimeHouse_Image1.png', '/AnimeHouseImages/AnimeHouse_Image2.png', '/AnimeHouseImages/AnimeHouse_Image3.png'],
         github: 'https://github.com/advikmaniar/interview-portal'
     },
 
@@ -213,7 +182,6 @@ const DataProjects = () => {
                 </a>
                 <br />
                 -&gt; Developed Recommendation Systems with Natural Language Processing tools and deep learning frameworks.
-
             </Typography>
             <Box
                 sx={{
@@ -379,7 +347,7 @@ const DataProjects = () => {
                                                         alignItems: 'center',
                                                     }}
                                                 >
-                                                    <StyledIcons
+                                                    <StyledIconsPortfolio
                                                         color="github"
                                                         bgColor="#333"
                                                         hoverColor="#444"
@@ -407,6 +375,7 @@ const DataProjects = () => {
                                                         'StreamLit': <SiStreamlit style={{ marginRight: "6px", color: "#FF4B4B", fontSize: "2.5rem" }} />,
                                                         'Sklearn': <SiScikitlearn style={{ marginRight: "8px", color: "#F79939", fontSize: "2.5rem" }} />,
                                                         'Plotly': <SiPlotly style={{ marginRight: "8px", color: "#119DFF", fontSize: "2.5rem" }} />,
+                                                        'Scipy': <SiScipy style={{ marginRight: "8px", color: "#0D56A5", fontSize: "2.5rem" }} />,
                                                     };
                                                     return (
                                                         <Tooltip title={tool} key={i}>
@@ -431,9 +400,11 @@ const DataProjects = () => {
                                                             flexDirection: 'column',
                                                             justifyContent: 'left',
                                                             alignItems: 'left',
-                                                            backgroundColor: 'blue',
+                                                            backgroundColor: 'background.default',
+                                                            borderRadius: '10px',
+                                                            padding: '10px',
                                                         }}>
-                                                        Description
+
                                                         {project.description.map((desc, i) => (
                                                             <Typography key={i} variant="body2" color="text.secondary"
                                                                 sx={{
@@ -453,7 +424,7 @@ const DataProjects = () => {
                     </Box>
                 ))}
             </Box>
-            <Divider sx={{ my: 1 }} />
+            <Divider sx={{ mt: 1 }} />
             <Typography variant="h6" color="text.secondary"
                 sx={{
                     mt: 1,
@@ -467,8 +438,8 @@ const DataProjects = () => {
                     fontFamily: 'Cursive',
                     justifyContent: 'center',
                 }}>
-                I am a <span style={{ backgroundColor: '#651efe', color: "black", borderRadius: 5, padding: "2px", boxShadow: 3 }}> Notebooks Expert</span> on Kaggle. To view more data intensive projects visit my Profile -&gt; {' '}
-                <StyledIcons
+                I am a <span style={{ backgroundColor: '#651efe', color: "white", borderRadius: 5, padding: "2px", boxShadow: 3 }}> Notebooks Expert</span> on Kaggle. To view more data intensive projects visit my Profile -&gt; {' '}
+                <StyledIconsPortfolio
                     color="kaggle"
                     bgColor="#1da1f2"
                     hoverColor="#1991c6"

@@ -41,11 +41,11 @@ export default function MainContentProjects() {
             fontWeight: 'bold',
             textAlign: 'center',
             width: 'fit-content',
-            fontFamily: 'Cursive',
+            fontFamily: 'monospace',
           }}
         >
-          Welcome to my <span style={{ animation: 'pulse 5s infinite, zoomIn 2s 1' }}>Portfolio📄</span>
-          !
+          <span style={{ animation: 'pulse 5s infinite, zoomIn 2s 1' }}>&lt;/Portfolio📄&gt;</span>
+          
         </Typography>
         <Button
           variant="contained"
@@ -62,7 +62,7 @@ export default function MainContentProjects() {
           endIcon={!showDataProjects ? <IoChevronForwardOutline /> : null}
           onClick={() => setShowDataProjects(!showDataProjects)}
         >
-          {showDataProjects ? "Back to Apps" : "Data Analysis Projects"}
+          {showDataProjects ? "Back to Apps" : "Data Projects"}
         </Button>
       </Box>
       <Box sx={{
