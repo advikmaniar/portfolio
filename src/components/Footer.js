@@ -3,7 +3,7 @@ import Box from "@mui/material/Box"
 import Button from "@mui/material/Button"
 import Container from "@mui/material/Container"
 import Divider from "@mui/material/Divider"
-import Link from "@mui/material/Link"
+// import Link from "@mui/material/Link"
 import Stack from "@mui/material/Stack"
 import TextField from "@mui/material/TextField"
 import Typography from "@mui/material/Typography"
@@ -11,6 +11,9 @@ import NameLogo from "./NameLogo"
 import { StyledIcons } from "../utils/utils"
 import { LinkedIn, GitHub, Instagram } from '@mui/icons-material';
 import { FaKaggle } from "react-icons/fa";
+import SkillsSidebar from "../skillsPage/SkillsSidebar";
+import ContactPopup from './ContactPopup';
+import { Link } from "react-router-dom";
 
 function Copyright() {
   return (
@@ -27,6 +30,11 @@ function Copyright() {
 
 export default function Footer() {
   const [contactModalOpen, setContactModalOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setSidebarOpen((prev) => !prev);
+  }
 
   const handleContactModal = () => {
     setContactModalOpen((prev) => !prev);
@@ -40,8 +48,8 @@ export default function Footer() {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          gap: { xs: 4, sm: 8 },
-          py: { xs: 8, sm: 10 },
+          gap: { xs: 1, sm: 2 },
+          py: { xs: 1, sm: 2 },
           textAlign: { sm: "center", md: "left" }
         }}
       >
@@ -50,8 +58,10 @@ export default function Footer() {
             display: "flex",
             flexDirection: { xs: "column", sm: "row" },
             width: "100%",
+            borderRadius: "20px",
+            padding: 2,
             justifyContent: "space-between",
-            backgroundColor: 'black'
+            backgroundColor: 'background.paper',
           }}
         >
           <Box
@@ -64,7 +74,7 @@ export default function Footer() {
           >
             <Box sx={{ width: { xs: "100%", sm: "60%" } }}>
               <NameLogo />
-              <Typography
+              {/* <Typography
                 variant="body2"
                 gutterBottom
                 sx={{ fontWeight: 600, mt: 2 }}
@@ -73,6 +83,7 @@ export default function Footer() {
               </Typography>
               <Stack direction="row" spacing={1} useFlexGap>
                 <Button
+                  onClick={handleContactModal}
                   variant="contained"
                   color="primary"
                   size="small"
@@ -80,53 +91,64 @@ export default function Footer() {
                 >
                   Connect
                 </Button>
-              </Stack>
+              </Stack> */}
             </Box>
           </Box>
           <Box
             sx={{
-              display: { xs: "none", sm: "flex" },
-              flexDirection: "column",
-              gap: 1
+              backgroundColor: "transparent",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              flexGrow: 1,
             }}
           >
-            <Link color="text.secondary" variant="body2" href="#">
-              Home
-            </Link>
-            <Link color="text.secondary" variant="body2" href="#">
-              About
-            </Link>
-            <Link color="text.secondary" variant="body2" href="#">
-              My Work
-            </Link>
-            <Link color="text.secondary" variant="body2" href="#">
-              Skills
-            </Link>
-            <Link color="text.secondary" variant="body2" href="#">
-              Contact
-            </Link>
+            <Button
+              variant="text"
+              color="info"
+              size="small"
+              component={Link}
+              to="/home"
+            >
+              HOME
+            </Button>
+            <Button
+              variant="text"
+              color="info"
+              size="small"
+              component={Link}
+              to="/about"
+            >
+              ABOUT
+            </Button>
+            <Button
+              variant="text"
+              color="info"
+              size="small"
+              component={Link}
+              to="/projects"
+            >
+              MY WORK
+            </Button>
+            <Button variant="text" color="info" size="small" onClick={toggleSidebar}>
+              SKILLS
+            </Button>
+            <Button variant="text" color="info" size="small" onClick={handleContactModal}>
+              CONTACT
+            </Button>
           </Box>
         </Box>
         <Box
           sx={{
             display: "flex",
             justifyContent: "space-between",
-            pt: { xs: 4, sm: 8 },
+            pt: { xs: 1, sm: 2 },
             width: "100%",
             borderTop: "1px solid",
             borderColor: "divider"
           }}
         >
           <div>
-            <Link color="text.secondary" variant="body2" href="#">
-              Privacy Policy
-            </Link>
-            <Typography sx={{ display: "inline", mx: 0.5, opacity: 0.5 }}>
-              &nbsp;•&nbsp;
-            </Typography>
-            <Link color="text.secondary" variant="body2" href="#">
-              Terms of Service
-            </Link>
             <Copyright />
           </div>
           <Stack
@@ -166,6 +188,8 @@ export default function Footer() {
           </Stack>
         </Box>
       </Container>
+      <SkillsSidebar open={sidebarOpen} onClose={toggleSidebar} />
+      <ContactPopup open={contactModalOpen} onClose={handleContactModal} />
     </React.Fragment>
   )
 }

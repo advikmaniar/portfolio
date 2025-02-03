@@ -10,11 +10,12 @@ import { FaFlutter } from "react-icons/fa6";
 import { IoLogoFirebase } from "react-icons/io5";
 import { SiRedux, SiDialogflow, SiTwilio, SiMongodb, SiMysql, SiDjango } from "react-icons/si";
 import { FaAws } from "react-icons/fa";
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Tooltip from '@mui/material/Tooltip';
 import { IoIosClose } from "react-icons/io";
 import { FcAndroidOs } from "react-icons/fc";
 import { StyledIconsPortfolio } from '../utils/utils';
+import { Favorite as FavoriteIcon } from '@mui/icons-material'; // Import FavoriteIcon
+import LikeButton from './LikeButton';
 
 const softwareProjects = [
 
@@ -26,7 +27,7 @@ const softwareProjects = [
         description: [
             'Real-time interview platform for employers to conduct interviews.',
             'Secure authentication and authorization using JWT and OAuth2.0.',
-            'Designed with Material UI and React.js for a seamless user experience.',
+            'Designed with React.js and Express.js for a seamless user experience.',
             'Integrated Twilio to establish secure meeting rooms for interviews.',
             'Deployed on AWS EC2 and S3 for scalability and reliability.',
         ],
@@ -43,55 +44,14 @@ const softwareProjects = [
         github: 'https://github.com/advikmaniar/interview-portal'
     },
     {
-        date: 'May 2021',
-        name: 'FarmApp',
-        affiliation: 'Mumbai University',
-        textSecondary: 'Android App developed with Java and Flutter',
-        description: [
-            'IoT Based Smart Irrigation System',
-            '',
-            '',
-        ],
-        tools: [
-            'Java',
-            'Android',
-            'Python',
-            'Google Firebase',
-            'Flutter',
-        ],
-        images: ['/FarmAppImages/FarmApp_Image1.png', '/FarmAppImages/FarmApp_Image2.png', '/FarmAppImages/FarmApp_Image3.png', '/FarmAppImages/FarmApp_Image4.png'],
-        github: 'https://github.com/advikmaniar/FarmApp'
-    },
-
-    {
-        date: 'December 2022',
-        name: 'Only Football',
-        affiliation: 'New York Institute of Technology',
-        textSecondary: 'E-commerce website for football merchandise',
-        description: [
-            'E-commerce website developed using Python and Django to browse, add-to-cart, and order football merchandise. Included functionality like Stripe payment.',
-            'Integrated MongoDB to store user data and order history, and AWS to deploy the website.',
-        ],
-        tools: [
-            'Python',
-            'Django',
-            'MySQL',
-            'MongoDB',
-            'Stripe',
-            'AWS'
-        ],
-        images: ['/OnlyFootballImages/OnlyFootball_Image1.png', '/OnlyFootballImages/OnlyFootball_Image2.png'],
-        github: 'https://github.com/advikmaniar/Only-Football-Website'
-    },
-    {
         date: 'October 2024',
-        name: 'React Portfolio',
+        name: 'AMPortfolio',
         affiliation: 'Self',
         textSecondary: 'Personal Portfolio developed with React.js',
         description: [
-            'Designed a responsive React portfolio using Material UI, showcasing projects, work experience, and skills interactively.',
-            'Established a backend system with Node.js to deliver 100+ real-time messages from the UI directly to the inbox.',
+            'Established a backend system with nodeMailer to deliver 100+ real-time messages from the UI.',
             'Integrated an intelligent chatbot using Google DialogFlow, with 30+ intents to help users with FAQs and page navigation',
+            'Redux for efficient state management, ensuring consistent user experience across dynamic UI components.',
         ],
         tools: [
             'React.js',
@@ -106,6 +66,51 @@ const softwareProjects = [
             '/PersonalPortfolioImages/ReactPortfolio_Image3.png', '/PersonalPortfolioImages/ReactPortfolio_Image4.png'],
         github: 'https://github.com/advikmaniar/portfolio'
     },
+    {
+        date: 'May 2021',
+        name: 'FarmApp',
+        affiliation: 'Mumbai University',
+        textSecondary: 'Android App developed with Java and Flutter',
+        description: [
+            'IoT Based Smart Irrigation System to control irrigation system remotely.',
+            'Implemented secure authentication using JWT and Google Firebase.',
+            'Developed android app to view farm metrics and control the irrigation pumps.',
+            'Configured webhooks to trigger irrigation pumps based on the soil moisture.',
+            'Utilized Python to visualize the data collected from the sensors in real-time.',
+        ],
+        tools: [
+            'Java',
+            'Android',
+            'Python',
+            'Google Firebase',
+            'Flutter',
+        ],
+        images: ['/FarmAppImages/FarmApp_Image1.png', '/FarmAppImages/FarmApp_Image2.png', '/FarmAppImages/FarmApp_Image3.png', '/FarmAppImages/FarmApp_Image4.png'],
+        github: 'https://github.com/advikmaniar/FarmApp'
+    },
+
+    {
+        date: 'December 2022',
+        name: 'OnlyFootball',
+        affiliation: 'NY Institute of Technology',
+        textSecondary: 'E-commerce website for football merchandise',
+        description: [
+            'E-commerce website for football items developed using Python and Django.',
+            'Utilized MongoDB to store product data to display dynamically on the website.',
+            'Integrated Stripe for secure payment processing and user authentication.',
+            'Developed an intuitive dashboard on Python to track user activity and sales.',
+        ],
+        tools: [
+            'Python',
+            'Django',
+            'MySQL',
+            'MongoDB',
+            'Stripe',
+            'AWS'
+        ],
+        images: ['/OnlyFootballImages/OnlyFootball_Image1.png', '/OnlyFootballImages/OnlyFootball_Image2.png'],
+        github: 'https://github.com/advikmaniar/Only-Football-Website'
+    },
 ];
 
 const SoftwareProjects = () => {
@@ -114,16 +119,7 @@ const SoftwareProjects = () => {
     const handleExpandClick = (row, index) => {
         setExpanded(expanded === `${row}-${index}` ? null : `${row}-${index}`);
     };
-
-    const [likes, setLikes] = useState(Array(softwareProjects.length).fill(0));
     const [expandedImageIndex, setExpandedImageIndex] = useState(0);
-
-    const handleLikeClick = (index) => {
-        const newLikes = [...likes];
-        newLikes[index] += 1;
-        setLikes(newLikes);
-
-    };
 
     return (
         <Container
@@ -171,7 +167,7 @@ const SoftwareProjects = () => {
                         {softwareProjects.slice(row * 2, row * 2 + 2).map((project, index) => (
                             <Box key={index}
                                 sx={{
-                                    height: expanded === `${row}-${index}` ? '60vh' : expanded ? "50px" : "350px",
+                                    height: expanded === `${row}-${index}` ? '65vh' : expanded ? "50px" : "350px",
                                     width: expanded === `${row}-${index}` ? '100vh' : expanded ? "50px" : "100%",
                                     transition: 'all 0.3s ease',
                                     margin: '10px',
@@ -297,7 +293,8 @@ const SoftwareProjects = () => {
                                                             <Box sx={{
                                                                 display: 'flex',
                                                                 alignContent: 'center',
-                                                                backgroundColor: '#77dd77', // pastel green color code
+                                                                // pastel green color code
+                                                                backgroundColor: '#4086f4',
                                                                 borderRadius: '20px',
                                                                 px: '5px',
                                                                 py: '2px',
@@ -313,14 +310,48 @@ const SoftwareProjects = () => {
                                                         {project.textSecondary}
                                                     </Typography>
                                                 </Box>
-                                                <StyledIconsPortfolio
-                                                    color="github"
-                                                    bgColor="#333"
-                                                    hoverColor="#444"
-                                                    icon={<GitHub fontSize="medium" />}
-                                                    url={project.github}
-                                                    onClick={(event) => event.stopPropagation()}
-                                                />
+                                                <Box sx={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                                    <StyledIconsPortfolio
+                                                        color="github"
+                                                        bgColor="#333"
+                                                        hoverColor="#444"
+                                                        icon={<GitHub fontSize="medium" />}
+                                                        url={project.github}
+                                                        onClick={(event) => event.stopPropagation()}
+                                                    />
+                                                    <LikeButton projectId={project.name} />
+                                                    {/* <IconButton
+                                                        sx={{
+                                                            color: 'grey',
+                                                            borderRadius: "30%",
+                                                            '&:hover': {
+                                                                transform: "scale(1.2)",
+                                                                boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.3)",
+                                                            },
+                                                            '&:hover::after': {
+                                                                content: '"Like Project"',
+                                                                position: 'absolute',
+                                                                backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                                                                color: 'white',
+                                                                padding: '2px 8px',
+                                                                borderRadius: '10px',
+                                                                top: '100%',
+                                                                left: '50%',
+                                                                transform: 'translateX(-50%)',
+                                                                whiteSpace: 'nowrap',
+                                                                zIndex: 1,
+                                                                fontSize: '0.70rem',
+                                                            },
+                                                            transition: "all 0.3s ease",
+                                                        }}
+                                                        onClick={(event) => {
+                                                            event.stopPropagation();
+                                                            event.currentTarget.style.color = event.currentTarget.style.color === 'red' ? 'grey' : 'red';
+                                                        }}
+                                                    >
+                                                        <FavoriteIcon />
+                                                    </IconButton> */}
+                                                </Box>
                                             </Container>
                                             <Divider sx={{ m: 1 }} />
                                             <Box
@@ -328,45 +359,56 @@ const SoftwareProjects = () => {
                                                     display: 'flex',
                                                     justifyContent: 'center',
                                                     mt: 0,
+                                                    // backgroundColor: 'white',
                                                 }}
                                             >
-                                                {project.tools.slice(0, expanded === `${row}-${index}` ? project.tools.length : 4).map((tool, i) => {
-                                                    const icons = {
-                                                        'React.js': <FaReact style={{ marginRight: "6px", color: "#61DBFB", fontSize: "2.5rem" }} />,
-                                                        'Node.js': <FaNode style={{ marginRight: "6px", color: "#68A063", fontSize: "2.5rem" }} />,
-                                                        'Java': <FaJava style={{ marginRight: "6px", color: "#f89820", fontSize: "2.5rem" }} />,
-                                                        'Python': <FaPython style={{ marginRight: "6px", color: "#306998", fontSize: "2.5rem" }} />,
-                                                        'MongoDB': <SiMongodb style={{ marginRight: "6px", color: "#3FA037", fontSize: "1.5rem" }} />,
-                                                        'AWS': <FaAws style={{ marginRight: "6px", color: "#FF9900", fontSize: "2.5rem" }} />,
-                                                        'Flutter': <FaFlutter style={{ marginRight: "6px", color: "#02569B", fontSize: "2.5rem" }} />,
-                                                        'Google Firebase': <IoLogoFirebase style={{ marginRight: "6px", color: "#f5820D", fontSize: "2.5rem" }} />,
-                                                        'HTML5': <FaHtml5 style={{ marginRight: "6px", color: "#C42C05", fontSize: "2.5rem" }} />,
-                                                        'CSS3': <FaCss3Alt style={{ marginRight: "6px", color: "#006EBB", fontSize: "2.5rem" }} />,
-                                                        'Django': <SiDjango style={{ marginRight: "6px", color: "#2BA977", fontSize: "2.5rem" }} />,
-                                                        'MySQL': <SiMysql style={{ marginRight: "6px", color: "#61DBFB", fontSize: "2.5rem" }} />,
-                                                        'Twilio': <SiTwilio style={{ marginRight: "6px", color: "#F22F46", fontSize: "2.5rem" }} />,
-                                                        'Google DialogFlow': <SiDialogflow style={{ marginRight: "6px", color: "#f5820D", fontSize: "2.5rem" }} />,
-                                                        'Redux': <SiRedux style={{ marginRight: "6px", color: "#764ABC", fontSize: "2.5rem" }} />,
-                                                        'Android': <FcAndroidOs style={{ marginRight: "6px", color: "#7db343", fontSize: "2.5rem" }} />,
-                                                    };
-                                                    return (
-                                                        <Tooltip title={tool} key={i}>
-                                                            <Box
-                                                                sx={{
-                                                                    m: 1,
-                                                                    width: 'fit-content',
-                                                                    flexWrap: "wrap",
-                                                                    '&:hover': {
-                                                                        transform: 'scale(1.2)',
-                                                                        transition: 'transform 0.2s ease-in-out'
-                                                                    }
-                                                                }}
-                                                            >
-                                                                {icons[tool]}
-                                                            </Box>
-                                                        </Tooltip>
-                                                    );
-                                                })}
+                                                <Box
+                                                    sx={{
+                                                        display: 'flex',
+                                                        flexDirection: 'row',
+                                                        justifyContent: 'center',
+                                                        alignItems: 'center',
+                                                        height: 'fit-content',
+                                                        flexWrap: 'wrap',
+                                                    }}>
+                                                    {project.tools.slice(0, expanded === `${row}-${index}` ? project.tools.length : 4).map((tool, i) => {
+                                                        const icons = {
+                                                            'React.js': <FaReact style={{ marginRight: "6px", color: "#61DBFB", fontSize: "2.5rem" }} />,
+                                                            'Node.js': <FaNode style={{ marginRight: "6px", color: "#68A063", fontSize: "2.5rem" }} />,
+                                                            'Java': <FaJava style={{ marginRight: "6px", color: "#f89820", fontSize: "2.5rem" }} />,
+                                                            'Python': <FaPython style={{ marginRight: "6px", color: "#306998", fontSize: "2.5rem" }} />,
+                                                            'MongoDB': <SiMongodb style={{ marginRight: "6px", color: "#3FA037", fontSize: "1.5rem" }} />,
+                                                            'AWS': <FaAws style={{ marginRight: "6px", color: "#FF9900", fontSize: "2.5rem" }} />,
+                                                            'Flutter': <FaFlutter style={{ marginRight: "6px", color: "#02569B", fontSize: "2.5rem" }} />,
+                                                            'Google Firebase': <IoLogoFirebase style={{ marginRight: "6px", color: "#f5820D", fontSize: "2.5rem" }} />,
+                                                            'HTML5': <FaHtml5 style={{ marginRight: "6px", color: "#C42C05", fontSize: "2.5rem" }} />,
+                                                            'CSS3': <FaCss3Alt style={{ marginRight: "6px", color: "#006EBB", fontSize: "2.5rem" }} />,
+                                                            'Django': <SiDjango style={{ marginRight: "6px", color: "#2BA977", fontSize: "2.5rem" }} />,
+                                                            'MySQL': <SiMysql style={{ marginRight: "6px", color: "#61DBFB", fontSize: "2.5rem" }} />,
+                                                            'Twilio': <SiTwilio style={{ marginRight: "6px", color: "#F22F46", fontSize: "2.5rem" }} />,
+                                                            'Google DialogFlow': <SiDialogflow style={{ marginRight: "6px", color: "#f5820D", fontSize: "2.5rem" }} />,
+                                                            'Redux': <SiRedux style={{ marginRight: "6px", color: "#764ABC", fontSize: "2.5rem" }} />,
+                                                            'Android': <FcAndroidOs style={{ marginRight: "6px", color: "#7db343", fontSize: "2.5rem" }} />,
+                                                        };
+                                                        return (
+                                                            <Tooltip title={tool} key={i}>
+                                                                <Box
+                                                                    sx={{
+                                                                        m: 0.5,
+                                                                        width: 'fit-content',
+                                                                        '&:hover': {
+                                                                            transform: 'scale(1.2)',
+                                                                            transition: 'transform 0.2s ease-in-out'
+                                                                        }
+                                                                    }}
+                                                                >
+                                                                    {icons[tool]}
+                                                                </Box>
+                                                            </Tooltip>
+                                                        );
+
+                                                    })}
+                                                </Box>
                                                 {expanded === `${row}-${index}` && (
                                                     <Box
                                                         sx={{

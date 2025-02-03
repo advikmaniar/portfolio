@@ -200,7 +200,7 @@ const DataProjects = () => {
                         {dataProjects.slice(row * 2, row * 2 + 2).map((project, index) => (
                             <Box key={index}
                                 sx={{
-                                    height: expanded === `${row}-${index}` ? '60vh' : expanded ? "50px" : "350px",
+                                    height: expanded === `${row}-${index}` ? '65vh' : expanded ? "50px" : "350px",
                                     width: expanded === `${row}-${index}` ? '100vh' : expanded ? "50px" : "100%",
                                     transition: 'all 0.3s ease',
                                     margin: '10px',
@@ -324,7 +324,7 @@ const DataProjects = () => {
                                                             <Box sx={{
                                                                 display: 'flex',
                                                                 alignContent: 'center',
-                                                                backgroundColor: '#77dd77', // pastel green color code
+                                                                backgroundColor: '#4086f4', 
                                                                 borderRadius: '20px',
                                                                 px: '5px',
                                                                 py: '2px',
@@ -364,35 +364,45 @@ const DataProjects = () => {
                                                     mt: 0
                                                 }}
                                             >
-                                                {project.tools.slice(0, expanded === `${row}-${index}` ? project.tools.length : 4).map((tool, i) => {
-                                                    const icons = {
-                                                        'Python': <FaPython style={{ marginRight: "6px", color: "#306998", fontSize: "2.5rem" }} />,
-                                                        'MongoDB': <SiMongodb style={{ marginRight: "6px", color: "#3FA037", fontSize: "1.5rem" }} />,
-                                                        'TensorFlow': <SiTensorflow style={{ marginRight: "8px", color: "#FFA101", fontSize: "2.5rem" }} />,
-                                                        'Pandas': <SiPandas style={{ marginRight: "8px", color: "#130751", fontSize: "2.5rem" }} />,
-                                                        'Numpy': <SiNumpy style={{ marginRight: "8px", color: "#4D76CE", fontSize: "2.5rem" }} />,
-                                                        'MySQL': <SiMysql style={{ marginRight: "6px", color: "#61DBFB", fontSize: "2.5rem" }} />,
-                                                        'StreamLit': <SiStreamlit style={{ marginRight: "6px", color: "#FF4B4B", fontSize: "2.5rem" }} />,
-                                                        'Sklearn': <SiScikitlearn style={{ marginRight: "8px", color: "#F79939", fontSize: "2.5rem" }} />,
-                                                        'Plotly': <SiPlotly style={{ marginRight: "8px", color: "#119DFF", fontSize: "2.5rem" }} />,
-                                                        'Scipy': <SiScipy style={{ marginRight: "8px", color: "#0D56A5", fontSize: "2.5rem" }} />,
-                                                    };
-                                                    return (
-                                                        <Tooltip title={tool} key={i}>
-                                                            <Box
-                                                                sx={{
-                                                                    m: 1,
-                                                                    '&:hover': {
-                                                                        transform: 'scale(1.2)',
-                                                                        transition: 'transform 0.2s ease-in-out'
-                                                                    }
-                                                                }}
-                                                            >
-                                                                {icons[tool]}
-                                                            </Box>
-                                                        </Tooltip>
-                                                    );
-                                                })}
+                                                <Box
+                                                    sx={{
+                                                        display: 'flex',
+                                                        flexDirection: 'row',
+                                                        justifyContent: 'center',
+                                                        alignItems: 'center',
+                                                        height: 'fit-content',
+                                                        flexWrap: 'wrap',
+                                                    }}>
+                                                    {project.tools.slice(0, expanded === `${row}-${index}` ? project.tools.length : 4).map((tool, i) => {
+                                                        const icons = {
+                                                            'Python': <FaPython style={{ marginRight: "6px", color: "#306998", fontSize: "2.5rem" }} />,
+                                                            'MongoDB': <SiMongodb style={{ marginRight: "6px", color: "#3FA037", fontSize: "1.5rem" }} />,
+                                                            'TensorFlow': <SiTensorflow style={{ marginRight: "8px", color: "#FFA101", fontSize: "2.5rem" }} />,
+                                                            'Pandas': <SiPandas style={{ marginRight: "8px", color: "#130751", fontSize: "2.5rem" }} />,
+                                                            'Numpy': <SiNumpy style={{ marginRight: "8px", color: "#4D76CE", fontSize: "2.5rem" }} />,
+                                                            'MySQL': <SiMysql style={{ marginRight: "6px", color: "#61DBFB", fontSize: "2.5rem" }} />,
+                                                            'StreamLit': <SiStreamlit style={{ marginRight: "6px", color: "#FF4B4B", fontSize: "2.5rem" }} />,
+                                                            'Sklearn': <SiScikitlearn style={{ marginRight: "8px", color: "#F79939", fontSize: "2.5rem" }} />,
+                                                            'Plotly': <SiPlotly style={{ marginRight: "8px", color: "#119DFF", fontSize: "2.5rem" }} />,
+                                                            'Scipy': <SiScipy style={{ marginRight: "8px", color: "#0D56A5", fontSize: "2.5rem" }} />,
+                                                        };
+                                                        return (
+                                                            <Tooltip title={tool} key={i}>
+                                                                <Box
+                                                                    sx={{
+                                                                        m: 1,
+                                                                        '&:hover': {
+                                                                            transform: 'scale(1.2)',
+                                                                            transition: 'transform 0.2s ease-in-out'
+                                                                        }
+                                                                    }}
+                                                                >
+                                                                    {icons[tool]}
+                                                                </Box>
+                                                            </Tooltip>
+                                                        );
+                                                    })}
+                                                </Box>
                                                 {expanded === `${row}-${index}` && (
                                                     <Box
                                                         sx={{

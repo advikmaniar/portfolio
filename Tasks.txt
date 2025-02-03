@@ -1,8 +1,15 @@
 
-1. Modify Footer
-2. Add details to experience
-3. Generate pictures for website
-4. Template for Email
-5. Sidebar icon on main page
-6. Body should be hidden under the header - Main Layout
-7. Use Redux for counting likes
+- Generate pictures for website
+- Sidebar icon on main page
+- Body should be hidden under the header - Main Layout
+- Use Redux for counting likes
+- Modify Skills sidebar 
+
+Issues:
+- Nodemailer auth failing
+
+
+AWS Deployment - 
+Connect to EC2 instance => ssh -i ec2-keynew.pem ubuntu@34.238.126.44
+SCP Transfer => scp -i ec2-keynew.pem -r /build ec2-user@34.238.126.44:~
+

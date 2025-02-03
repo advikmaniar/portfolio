@@ -206,9 +206,9 @@ export default function AppAppBar() {
                     <CloseRoundedIcon />
                   </IconButton>
                 </Box>
-                <MenuItem>Home</MenuItem>
-                <MenuItem>About</MenuItem>
-                <MenuItem>My Work</MenuItem>
+                <MenuItem component={Link} to="/home">Home</MenuItem>
+                <MenuItem component={Link} to="/about">About</MenuItem>
+                <MenuItem component={Link} to="/projects">My Work</MenuItem>
                 <MenuItem onClick={toggleSidebar} >Skills</MenuItem>
                 <MenuItem onClick={handleContactModal} >Contact</MenuItem>
                 <Divider sx={{ my: 3 }} />
